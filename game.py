@@ -16,10 +16,18 @@ def main():
     game = True
 
     while game:
+        if player.get_money() <= 0:
+            break
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n---\n")
         print(player)
         print("\n---")
-        player.set_bet(int(cutie.get_number("What bet would you like to make?", 0)))
+        player.set_bet(
+            int(
+                cutie.get_number(
+                    "What bet would you like to make?", 0, player.get_money()
+                )
+            )
+        )
         player.change_money(0 - player.get_bet())
 
         player.reset_hand()
