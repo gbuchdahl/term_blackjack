@@ -6,6 +6,8 @@ Designed by Gabriel Buchdahl for the Kleiner Perkins Fellowship Engineering Chal
 
 In keeping with the spirit of the challenge, I did not spend more than 3 hours making this game.
 
+![Opening Image](https://raw.githubusercontent.com/gbuchdahl/term_blackjack/master/images/open.png)
+
 ### Running Code
 First, we must clone the repo and install the dependencies.
 After cloning, running
