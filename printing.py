@@ -11,7 +11,7 @@ def print_piles(cards: List[Card]) -> None:
 
     for card in cards:
         num = card.get_name()
-        if num == 10:
+        if num == "10":
             print(f"|{num}", end="")
         else:
             print(f"| {num}", end="")

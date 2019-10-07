@@ -27,6 +27,14 @@ class Card:
         else:
             return str(self.num)
 
+    def get_value(self) -> int:
+        if self.num == 11 or self.num == 12 or self.num == 13:
+            return 10
+        if self.num == 1:
+            return 11
+        else:
+            return self.num
+
     def get_suit(self) -> str:
         return self.suit
 
