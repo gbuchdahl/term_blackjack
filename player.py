@@ -33,12 +33,17 @@ class Player:
         return None
 
     def sum_hand(self):
+        # in general, we want to sum the values of the cards
+        # some of the cards are worth 10 even though they arent tens
+        # aces are conditionally worth 1 or 11
         res = 0
         aces = 0
         for card in self.hand:
             res += card.get_value()
             if card.get_name() == "A":
                 aces += 1
+
+        # ace logic
         while aces and res > 21:
             aces -= 1
             res -= 10

@@ -1,12 +1,4 @@
 import typing
-from enum import Enum
-
-
-class Color(Enum):
-    HEARTS = "H"
-    CLUBS = "C"
-    DIAMONDS = "D"
-    SPADES = "S"
 
 
 class Card:
@@ -37,19 +29,6 @@ class Card:
 
     def get_suit(self) -> str:
         return self.suit
-
-    # print a small version of the card
-    def print_little(self):
-        print(f"+--+ \n|{self.get_name()}{self.suit}|", end="")
-        return None
-
-    def print_big(self):
-        print(self, end="")
-
-    # print the card in full
-    def __str__(self):
-        str = f"+--+ \n|{self.get_name()} | \n| {self.suit}| \n+--+ "
-        return str
 
 
 # driver function for testing
