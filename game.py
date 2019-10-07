@@ -13,9 +13,12 @@ def main():
     player = Player(name)
     dealer = Player("Dealer")
     deck = reset_deck()
+    game = True
 
-    while True:
+    while game:
+        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n---\n")
         print(player)
+        print("\n---")
         player.set_bet(int(cutie.get_number("What bet would you like to make?", 0)))
         player.change_money(0 - player.get_bet())
 
@@ -28,6 +31,7 @@ def main():
         flag = True
         busted = False
         while flag:
+            print("\n~Use the arrow keys and enter to select~\n")
             opts = ["Hit", "Stick"]
             opt = cutie.select(opts)
             if opt == 1:
@@ -45,7 +49,9 @@ def main():
 
         if not busted:
             dealer_bust = False
+            print("---\n")
             print("Dealer:")
+            print("\n---")
             dealer.reset_hand()
             for i in range(2):
                 card, deck = draw(deck)
@@ -53,7 +59,7 @@ def main():
             dealer.print_hand()
             time.sleep(1)
             while dealer.sum_hand() < 17:
-                print("Dealer hits.")
+                print("Dealer hits.\n")
                 card, deck = draw(deck)
                 dealer.add_to_hand(card)
                 dealer.print_hand()
@@ -78,13 +84,23 @@ def main():
                 player.change_money(2 * player.get_bet())
                 player.set_bet(0)
             elif player.sum_hand() > dealer.sum_hand() and player.sum_hand() == 21:
-                print(f"BLACKJACK!")
-                player.change_money(2 * player.get_bet())
-                player.change_money(0.5 * player.get_bet())
+                hand = player.get_hand()
+                if len(hand) == 2 and ("A" in hand):
+                    print(f"BLACKJACK!")
+                    player.change_money(2 * player.get_bet())
+                    player.change_money(0.5 * player.get_bet())
+                else:
+                    print(f"{player.get_name()} wins!")
+                    player.change_money(2 * player.get_bet())
                 player.set_bet(0)
 
             else:
                 print(f"{player.get_name()} loses :(")
+
+        opts = ["Continue", "Exit"]
+        opt = cutie.select(opts)
+        if opt == 1:
+            game = False
 
 
 def draw(deck):

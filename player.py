@@ -34,12 +34,13 @@ class Player:
 
     def sum_hand(self):
         res = 0
-        ace = False
+        aces = 0
         for card in self.hand:
             res += card.get_value()
-            if card.get_name == "A":
-                ace = True
-        if ace and res > 21:
+            if card.get_name() == "A":
+                aces += 1
+        while aces and res > 21:
+            aces -= 1
             res -= 10
 
         return res
